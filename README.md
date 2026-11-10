@@ -1,16 +1,32 @@
-# React + Vite
+# 📚 Online Book Store Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A comprehensive web application designed for managing a book store inventory, customer orders, and user authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+* **User Authentication:** Secure sign up, login, and role-based access (Customer / Admin).
+* **Product Catalog:** Browse books by category, author, or search by title.
+* **Shopping Cart & Checkout:** Add items to cart, update quantities, and simulate secure checkout.
+* **Admin Dashboard:** Add, update, or remove books and manage user orders.
+* **Responsive Design:** Fully optimized for mobile, tablet, and desktop screens.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+* **Frontend:** HTML5, CSS3, JavaScript / React.js
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB
+* **Styling:** Tailwind CSS
+
+---
+
+## 📦 Installation & Setup
+
+Follow these steps to run the project locally on your machine:
+
+1. **Clone the repository:**
+
+   git clone : [ https://github.com/muhammadmoazzam27/Book-Store-Frontend.git ]
