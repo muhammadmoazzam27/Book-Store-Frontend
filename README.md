@@ -20,13 +20,3 @@ A comprehensive web application designed for managing a book store inventory, cu
 * **Backend:** Node.js, Express.js
 * **Database:** MongoDB
 * **Styling:** Tailwind CSS
-
----
-
-## 📦 Installation & Setup
-
-Follow these steps to run the project locally on your machine:
-
-1. **Clone the repository:**
-
-   git clone : [ https://github.com/muhammadmoazzam27/Book-Store-Frontend.git ]
