@@ -6,6 +6,7 @@ import Contact from './Contact'
 import Products from './Products'
 import PageNotFound from '@/components/PageNotFound'
 import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 const Frontend = () => {
     return (
@@ -18,6 +19,7 @@ const Frontend = () => {
                 <Route path="products" element={<Products />} />
                 <Route path="*" element={<PageNotFound />} />
             </Routes>
+            <Footer />
         </>
     )
 }

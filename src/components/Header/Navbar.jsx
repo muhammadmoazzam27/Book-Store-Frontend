@@ -22,7 +22,7 @@ const Navbar = () => {
 
           {/* Desktop & Tablet Nav Links (Hidden on small screens) */}
           <div className='hidden md:flex items-center'>
-            <ul className='flex items-center gap-6 lg:gap-2'>
+            <ul className='flex items-center gap-1 lg:gap-2'>
               <li>
                 <Link to="/" className='px-4 py-2 rounded-3xl hover:text-gray-300 hover:bg-gray-800 transition-colors'>Home</Link>
               </li>
@@ -42,16 +42,16 @@ const Navbar = () => {
           <div className='hidden md:flex items-center gap-3'>
             {!isAuth ? (
               <>
-                <Link to="/login" className='border border-gray-600 rounded bg-gray-800 hover:bg-gray-700 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
+                <Link to="/auth/login" className='border border-gray-600 rounded bg-gray-800 hover:bg-gray-700 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
                   Login
                 </Link>
-                <Link to="/register" className='rounded bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
+                <Link to="/auth/register" className='rounded bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
                   Register
                 </Link>
               </>
             ) : (
               <>
-                <Link to="/dashboard" className='border border-gray-600 rounded bg-gray-800 hover:bg-gray-700 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
+                <Link to="/dashboard/home-overview" className='border border-gray-600 rounded bg-gray-800 hover:bg-gray-700 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
                   Dashboard
                 </Link>
                 <button
@@ -68,7 +68,7 @@ const Navbar = () => {
           <div className='md:hidden flex items-center'>
             <button
               onClick={toggleMenu}
-              className='text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 p-2'
+              className='text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset rounded focus:ring-indigo-500 p-2'
               aria-label="Toggle Menu"
             >
               <svg className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
@@ -130,14 +130,14 @@ const Navbar = () => {
           {!isAuth ? (
             <>
               <Link
-                to="/login"
+                to="/auth/login"
                 onClick={toggleMenu}
                 className='w-full text-center border border-gray-700 rounded bg-gray-800 hover:bg-gray-700 text-white py-2 font-medium transition-colors'
               >
                 Login
               </Link>
               <Link
-                to="/register"
+                to="/auth/register"
                 onClick={toggleMenu}
                 className='w-full text-center rounded bg-indigo-600 hover:bg-indigo-500 text-white py-2 font-medium transition-colors'
               >
@@ -147,7 +147,7 @@ const Navbar = () => {
           ) : (
             <>
               <Link
-                to="/dashboard"
+                to="/dashboard/home-overview"
                 onClick={toggleMenu}
                 className='w-full text-center border border-gray-700 rounded bg-gray-800 hover:bg-gray-700 text-white py-2 font-medium transition-colors'
               >

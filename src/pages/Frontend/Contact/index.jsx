@@ -2,7 +2,9 @@ import React from 'react'
 
 const Contact = () => {
   return (
-    <div>Contact</div>
+    <main className='min-h-screen'>
+      <h1 className='text-center text-2xl font-bold py-2'>Contact</h1>
+    </main>
   )
 }
 
