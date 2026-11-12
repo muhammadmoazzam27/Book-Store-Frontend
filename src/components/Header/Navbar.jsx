@@ -42,10 +42,10 @@ const Navbar = () => {
           <div className='hidden md:flex items-center gap-3'>
             {!isAuth ? (
               <>
-                <Link to="/auth/login" className='border border-gray-600 rounded bg-gray-800 hover:bg-gray-700 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
+                <Link to="/auth/page/login" className='border border-gray-600 rounded bg-gray-800 hover:bg-gray-700 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
                   Login
                 </Link>
-                <Link to="/auth/register" className='rounded bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
+                <Link to="/auth/page/register" className='rounded bg-indigo-600 hover:bg-indigo-500 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
                   Register
                 </Link>
               </>
@@ -130,14 +130,14 @@ const Navbar = () => {
           {!isAuth ? (
             <>
               <Link
-                to="/auth/login"
+                to="/auth/page/login"
                 onClick={toggleMenu}
                 className='w-full text-center border border-gray-700 rounded bg-gray-800 hover:bg-gray-700 text-white py-2 font-medium transition-colors'
               >
                 Login
               </Link>
               <Link
-                to="/auth/register"
+                to="/auth/page/register"
                 onClick={toggleMenu}
                 className='w-full text-center rounded bg-indigo-600 hover:bg-indigo-500 text-white py-2 font-medium transition-colors'
               >
