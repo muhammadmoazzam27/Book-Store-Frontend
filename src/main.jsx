@@ -4,12 +4,15 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './App.css'
 import App from './App.jsx'
+import AuthContext from './context/AuthContext'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <ConfigProvider>
       <BrowserRouter>
-        <App />
+        <AuthContext>
+          <App />
+        </AuthContext>
       </BrowserRouter>
     </ConfigProvider>
   </StrictMode>

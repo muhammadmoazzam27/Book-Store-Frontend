@@ -1,8 +1,11 @@
 import React from 'react'
+import AuthContext from './AuthContext'
 
-const AppProvider = () => {
+const AppProvider = ({ children }) => {
   return (
-    <div>AppProvider</div>
+    <AuthContext>
+      {children}
+    </AuthContext>
   )
 }
 

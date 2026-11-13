@@ -1,12 +1,34 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+const initialState = { fullName: "", email: "", password: "" }
 
 const Register = () => {
+
   const [showPassword, setShowPassword] = useState(false);
+  const [formData, setFormData] = useState(initialState);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((preState) => ({ ...preState, [name]: value }))
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Yahan aap apna sign up logic likh sakte hain
+
+    const { fullName, email, password } = formData;
+    setIsLoading(true)
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 5000);
+
+    const user = { fullName, email, password }
+
+    console.log(user);
+
+
   };
 
   return (
@@ -20,32 +42,36 @@ const Register = () => {
           <form className="mt-6" onSubmit={handleSubmit}>
 
             {/* Full Name */}
-            <label htmlFor="name" className="font-medium text-slate-300">Full Name</label>
+            <label htmlFor="fullName" className="font-medium text-slate-300">Full Name</label>
             <div className="flex items-center mt-2 mb-4 h-11 pl-3 border border-slate-700 rounded-full focus-within:ring-2 focus-within:ring-indigo-500 bg-slate-900/50 transition-all overflow-hidden">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                 <path d="M18.311 16.406a9.64 9.64 0 0 0-4.748-4.158 5.938 5.938 0 1 0-7.125 0 9.64 9.64 0 0 0-4.749 4.158.937.937 0 1 0 1.623.938c1.416-2.447 3.916-3.906 6.688-3.906 2.773 0 5.273 1.46 6.689 3.906a.938.938 0 0 0 1.622-.938M5.938 7.5a4.063 4.063 0 1 1 8.125 0 4.063 4.063 0 0 1-8.125 0" fill="#94a3b8" />
               </svg>
               <input
-                id="name"
+                id="fullName"
                 type="text"
+                name="fullName"
                 className="h-full px-3 w-full outline-none bg-transparent text-white placeholder-slate-500"
                 placeholder="Enter your full name"
                 required
+                onChange={handleChange}
               />
             </div>
 
             {/* Email Address */}
-            <label htmlFor="email-address" className="font-medium text-slate-300 mt-4 block">Email Address</label>
+            <label htmlFor="email" className="font-medium text-slate-300 mt-4 block">Email Address</label>
             <div className="flex items-center mt-2 mb-4 h-11 pl-3 border border-slate-700 rounded-full focus-within:ring-2 focus-within:ring-indigo-500 bg-slate-900/50 transition-all overflow-hidden">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" className="flex-shrink-0">
                 <path d="M17.5 3.438h-15a.937.937 0 0 0-.937.937V15a1.563 1.563 0 0 0 1.562 1.563h13.75A1.563 1.563 0 0 0 18.438 15V4.375a.94.94 0 0 0-.938-.937m-2.41 1.874L10 9.979 4.91 5.313zM3.438 14.688v-8.18l5.928 5.434a.937.937 0 0 0 1.268 0l5.929-5.435v8.182z" fill="#94a3b8" />
               </svg>
               <input
-                id="email-address"
+                id="email"
                 type="email"
+                name="email"
                 className="h-full px-3 w-full outline-none bg-transparent text-white placeholder-slate-500"
                 placeholder="Enter your email address"
                 required
+                onChange={handleChange}
               />
             </div>
 
@@ -60,9 +86,11 @@ const Register = () => {
               <input
                 id="password"
                 type={showPassword ? "text" : "password"}
+                name="password"
                 className="h-full px-3 w-full outline-none bg-transparent text-white placeholder-slate-500"
                 placeholder="Enter your password"
                 required
+                onChange={handleChange}
               />
 
               {/* Eye Toggle Button */}
@@ -88,8 +116,23 @@ const Register = () => {
               </button>
             </div>
 
-            <button type="submit" className="w-full mt-2 px-4 py-3 font-medium text-white bg-indigo-600 rounded-full hover:bg-indigo-700 transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 cursor-pointer">
-              Create Account
+            <button
+              type="submit"
+              disabled={isLoading}
+              className={`w-full mt-2 px-4 py-3 font-medium text-white rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-indigo-500 flex items-center justify-center gap-2 ${isLoading ? "bg-indigo-400 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700 cursor-pointer"
+                }`}
+            >
+              {isLoading ? (
+                <>
+                  <svg className="w-5 h-5 animate-spin text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <span>Creating Account...</span>
+                </>
+              ) : (
+                "Create Account"
+              )}
             </button>
 
             {/* Already have an account link */}
@@ -97,7 +140,7 @@ const Register = () => {
               Already have an account?{" "}
               <Link
                 className="text-indigo-400 font-medium hover:underline hover:underline-offset-2 hover:decoration-indigo-400 transition-all"
-                to="/auth/login"
+                to="/auth/page/login"
               >
                 Login
               </Link>

@@ -32,7 +32,7 @@ const Copyright = () => {
         <div>
           <h2 className="font-semibold text-white text-base mb-3">Subscribe to our newsletter</h2>
           <div className="text-sm space-y-4 max-w-sm">
-            <p className="text-slate-400">Get weekly recommendations, author interviews, and exclusive discounts sent to your inbox.</p>
+            <p className="text-slate-400">Subscribe Now to Get Regular Updates</p>
             <div className="flex items-center gap-2 p-1.5 rounded-lg bg-gray-800 border border-gray-700">
               <input
                 className="bg-transparent text-white placeholder-slate-400 focus:outline-none w-full px-3 py-1.5 text-sm"
