@@ -30,7 +30,7 @@ const Copyright = () => {
 
         {/* Newsletter Subscription */}
         <div>
-          <h2 className="font-semibold text-white text-base mb-3">Subscribe to our newsletter</h2>
+          <h2 className="font-semibold text-white text-base mb-3">Get the latest Updates!</h2>
           <div className="text-sm space-y-4 max-w-sm">
             <p className="text-slate-400">Subscribe Now to Get Regular Updates</p>
             <div className="flex items-center gap-2 p-1.5 rounded-lg bg-gray-800 border border-gray-700">

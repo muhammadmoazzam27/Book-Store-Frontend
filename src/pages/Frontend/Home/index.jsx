@@ -71,9 +71,11 @@ const Home = () => {
 
       {/* Image Gallery */}
       <section id='imageGallery' className='py-4 bg-gray-100'>
-        <h1 className="text-3xl font-bold text-center mx-auto">Our Latest Creations</h1>
-        <p className="text-sm text-slate-500 text-center mt-2 max-w-lg mx-auto">A visual collection of our most recent works - each piece crafted with intention, emotion, and style.</p>
-        <div className="overflow-hidden py-12 w-full relative max-w-6xl  mx-auto" onMouseEnter={() => setStopScroll(true)} onMouseLeave={() => setStopScroll(false)}>
+        <div className='my-6'>
+          <h1 className="text-center text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">Our Latest Creations</h1>
+          <p className=" text-center p-2 text-base sm:text-lg text-gray-600 leading-relaxed">A visual collection of our most recent works - each piece crafted with intention, emotion, and style.</p>
+        </div>
+        <div className="overflow-hidden py-12 w-full relative max-w-6xl  mx-auto bg-gray-200" onMouseEnter={() => setStopScroll(true)} onMouseLeave={() => setStopScroll(false)}>
           <div className="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent" />
           <div className="marquee-inner flex w-fit" style={{ animationPlayState: stopScroll ? "paused" : "running", animationDuration: cardData.length * 2500 + "ms" }}>
             <div className="flex">

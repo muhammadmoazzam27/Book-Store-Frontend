@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "@/utils/global";
 
 const initialState = { fullName: "", email: "", password: "" }
 
 const Register = () => {
+
+  const VITE_API_URL = import.meta.env.VITE_API_URL
 
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(initialState);
@@ -16,18 +20,51 @@ const Register = () => {
   }
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
 
     const { fullName, email, password } = formData;
-    setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 5000);
 
-    const user = { fullName, email, password }
+    if (fullName.trim() === "" || fullName.length < 3) {
+      return toastify("Enter full name must at least 3 chars!", "error")
+    }
+    if (email.trim() === "" || !email.includes("@") || !email.includes(".")) {
+      return toastify("Enter valid email address!", "error")
+    }
+    if (password.trim() === "" || password.length < 6) {
+      return toastify("Password must at least 6 chars!", "error")
+    }
 
-    console.log(user);
+    const user = { fullName, email, password };
 
+    setIsLoading(true);
+
+    axios.post(`${VITE_API_URL}/auth/register`, user)
+
+      .then((res) => {
+        const { status, data } = res;
+        if (status === 201) {
+          navigate("/auth/page/login")
+          return toastify(data.message || "Register successfully!", "success")
+        }
+      })
+      .catch((error) => {
+        const status = error?.response?.status;
+        const message = error?.response?.data?.message;
+        if (status === 403) {
+          return toastify(message || "User already exist", "error")
+        }
+        if (status === 400) {
+          return toastify(message || "Please! fill the fields", "error")
+        }
+        if (status === 500) {
+          return toastify(message || "Internal server error", "error")
+        }
+        console.log("Error => ", error)
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
 
   };
 
