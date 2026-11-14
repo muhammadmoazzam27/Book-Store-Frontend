@@ -1,10 +1,10 @@
-import { useAuthContext } from '@/context/AuthContext'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useAuthContext } from '@/context/AuthContext'
 
 const Navbar = () => {
-  // const [isAuth, setIsAuth] = useState(false)
-  const {isAuth} = useAuthContext()
+
+  const { isAuth, handleLogout } = useAuthContext()
   const [isOpen, setIsOpen] = useState(false)
 
   // Sidebar toggle handler
@@ -57,7 +57,7 @@ const Navbar = () => {
                   Dashboard
                 </Link>
                 <button
-                  onClick={() => setIsAuth(false)}
+                  onClick={handleLogout}
                   className='rounded bg-red-600 hover:bg-red-500 text-white px-4 py-1.5 text-sm font-medium transition-colors'
                 >
                   Logout
@@ -156,7 +156,7 @@ const Navbar = () => {
                 Dashboard
               </Link>
               <button
-                onClick={() => { setIsAuth(false); toggleMenu(); }}
+                onClick={() => { handleLogout(); toggleMenu(); }}
                 className='w-full text-center rounded bg-red-600 hover:bg-red-500 text-white py-2 font-medium transition-colors'
               >
                 Logout

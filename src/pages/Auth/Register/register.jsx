@@ -45,14 +45,14 @@ const Register = () => {
         const { status, data } = res;
         if (status === 201) {
           navigate("/auth/page/login")
-          return toastify(data.message || "Register successfully!", "success")
+          return toastify(data.message || "A user successfully registered", "success")
         }
       })
       .catch((error) => {
         const status = error?.response?.status;
         const message = error?.response?.data?.message;
         if (status === 403) {
-          return toastify(message || "User already exist", "error")
+          return toastify(message || "A user already exist", "error")
         }
         if (status === 400) {
           return toastify(message || "Please! fill the fields", "error")
@@ -60,7 +60,6 @@ const Register = () => {
         if (status === 500) {
           return toastify(message || "Internal server error", "error")
         }
-        console.log("Error => ", error)
       })
       .finally(() => {
         setIsLoading(false);

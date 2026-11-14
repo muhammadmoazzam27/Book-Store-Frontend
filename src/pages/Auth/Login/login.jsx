@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import "@/utils/global";
+import { useAuthContext } from "@/context/AuthContext";
 
 const initialState = { email: "", password: "" }
 
 const Login = () => {
 
+  const VITE_API_URL = import.meta.env.VITE_API_URL
+
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState(initialState);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { readProfile } = useAuthContext();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,6 +27,36 @@ const Login = () => {
     const { email, password } = formData;
 
     const user = { email, password };
+
+    setIsLoading(true);
+
+    axios.post(`${VITE_API_URL}/auth/login`, user)
+
+      .then((res) => {
+        const { status, data } = res;
+        if (status === 200) {
+          localStorage.setItem("jwt", data.token)
+          readProfile(data.token)
+          navigate("/")
+          return toastify(data.message || "A user successfully login", "success")
+        }
+      })
+      .catch((error) => {
+        const status = error?.response?.status;
+        const message = error?.response?.data?.message;
+        if (status === 401) {
+          return toastify(message || "Invalid Credential!", "error")
+        }
+        if (status === 404) {
+          return toastify(message || "Invalid Credential!", "error")
+        }
+        if (status === 500) {
+          return toastify(message || "internal server error", "error")
+        }
+      })
+      .finally(() => {
+        setIsLoading(false);
+      })
 
   };
 
