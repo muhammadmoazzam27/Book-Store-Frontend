@@ -50,7 +50,7 @@ const Copyright = () => {
       {/* Bottom Copyright Text */}
       <div className="py-6 text-center border-t border-gray-800 mt-10 text-slate-400 text-xs sm:text-sm">
         <p>
-          Copyright 2026 © <a href="/" className="text-white font-medium hover:underline">Book Store</a>. All Rights Reserved.
+          Copyright 2026 © <Link to="/" className="text-white font-medium hover:underline">Book Store</Link>. All Rights Reserved.
         </p>
       </div>
     </footer>
