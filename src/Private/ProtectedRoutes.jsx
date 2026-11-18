@@ -2,12 +2,16 @@ import { useAuthContext } from '@/context/AuthContext'
 import React from 'react'
 import { Navigate } from 'react-router-dom';
 
-const ProtectedRoutes = ({ Component }) => {
+const ProtectedRoutes = ({ Component, allowedRoles }) => {
 
-    const { isAuth } = useAuthContext();
+    const { isAuth, user } = useAuthContext();
 
     if (!isAuth) {
-        return <Navigate to="/auth/page/login" />
+        return <Navigate to="/auth/page/login" replace />
+    }
+
+    if (allowedRoles && !allowedRoles.includes(user.role)) {
+        return <Navigate to="/dashboard" replace />
     }
 
     return <Component />

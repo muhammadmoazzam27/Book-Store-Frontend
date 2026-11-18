@@ -55,7 +55,7 @@ const AuthContext = ({ children }) => {
   const handleLogout = () => {
     localStorage.removeItem("jwt");
     dispatch({ type: "SET_LOGOUT" })
-    message.success("logout successul")
+    message.success("logout successful!")
   }
 
   return (

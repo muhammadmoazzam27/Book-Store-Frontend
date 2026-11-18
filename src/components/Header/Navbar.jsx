@@ -53,7 +53,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link to="/dashboard/home-overview" className='border border-gray-600 rounded bg-gray-800 hover:bg-gray-700 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
+                <Link to="/dashboard" className='border border-gray-600 rounded bg-gray-800 hover:bg-gray-700 text-white px-4 py-1.5 text-sm font-medium transition-colors'>
                   Dashboard
                 </Link>
                 <button
@@ -149,7 +149,7 @@ const Navbar = () => {
           ) : (
             <>
               <Link
-                to="/dashboard/home-overview"
+                to="/dashboard"
                 onClick={toggleMenu}
                 className='w-full text-center border border-gray-700 rounded bg-gray-800 hover:bg-gray-700 text-white py-2 font-medium transition-colors'
               >
