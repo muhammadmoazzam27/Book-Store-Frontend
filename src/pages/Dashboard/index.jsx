@@ -98,7 +98,7 @@ const Dashboard = () => {
             theme="dark"
             mode="inline"
             selectedKeys={[selectedKey]}
-            items={items.filter((item) => !item.allowedRoles || item.allowedRoles.includes(currentRole))}
+            items={items.filter((item) => !item.allowedroles || item.allowedroles.includes(currentRole))}
             onClick={({ key }) => {
                 setSelectedKey(key);
                 if (isMobile) setMobileDrawerOpen(false);
@@ -201,7 +201,7 @@ const Dashboard = () => {
                     <Content
                         style={{
                             margin: isMobile ? '16px 12px' : '24px',
-                            padding: isMobile ? 16 : 24,
+                            padding: isMobile ? 16 : 0,
                             minHeight: 280,
                             background: colorBgContainer,
                             borderRadius: borderRadiusLG,
@@ -209,12 +209,12 @@ const Dashboard = () => {
                         }}
                     >
 
-                        <div style={{ marginBottom: 24 }}>
+                        {/* <div style={{ marginBottom: 24 }}>
                             <h1 className='text-2xl font-bold'>Dashboard</h1>
                             <Text type="secondary">
                                 Welcome to the {currentRole} Workspace.
                             </Text>
-                        </div>
+                        </div> */}
 
                         <Routes />
 

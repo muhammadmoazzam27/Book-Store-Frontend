@@ -8,7 +8,7 @@ import AuthContext from './context/AuthContext'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <ConfigProvider>
+    <ConfigProvider theme={{ token: { colorPrimary: "#1d3557" }, components: { Button: { controlOutlineWidth: 0 } } }}>
       <BrowserRouter>
         <AuthContext>
           <App />

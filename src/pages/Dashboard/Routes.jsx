@@ -5,15 +5,17 @@ import Orders from './Orders'
 import Products from './Products'
 import Users from './Users'
 import ProtectedRoutes from '@/Private/ProtectedRoutes'
+import AddProduct from './Add-Product'
 
 const Index = () => {
     return (
         <>
             <Routes>
                 <Route path='/' element={<DashboardHome />} />
-                <Route path='orders' element={<ProtectedRoutes Component={Orders} allowedRoles={["Super Admin", "Seller"]} />} />
-                <Route path='products' element={<ProtectedRoutes Component={Products} allowedRoles={["Super Admin", "Customer"]} />} />
-                <Route path='users' element={<ProtectedRoutes Component={Users} allowedRoles={["Super Admin"]} />} />
+                <Route path='orders' element={<ProtectedRoutes Component={Orders} allowedroles={["Super Admin", "Seller"]} />} />
+                <Route path='products' element={<ProtectedRoutes Component={Products} allowedroles={["Super Admin", "Customer"]} />} />
+                <Route path='add-product' element={<ProtectedRoutes Component={AddProduct} allowedroles={["Super Admin", "Seller"]} />} />
+                <Route path='users' element={<ProtectedRoutes Component={Users} allowedroles={["Super Admin"]} />} />
             </Routes>
         </>
     )
