@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { MenuFoldOutlined, MenuUnfoldOutlined, BookOutlined, UserOutlined, BellOutlined, } from '@ant-design/icons';
 import { Layout, Menu, Button, theme, Grid, Drawer, Avatar, Badge, Space, Typography, Tag, } from 'antd';
 import { items } from './Sidebar/SidebarItems';
-import axios from 'axios';
 import Routes from "@/pages/Dashboard/Routes"
+import { useAuthContext } from '@/context/AuthContext';
 
 const { Header, Sider, Content } = Layout;
 const { useBreakpoint } = Grid;
@@ -12,12 +12,12 @@ const { Title, Text } = Typography;
 
 const Dashboard = () => {
 
-    const VITE_API_URL = import.meta.env.VITE_API_URL
-
     const [collapsed, setCollapsed] = useState(false);
     const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
     const [currentRole, setCurrentRole] = useState('Customer');
     const [selectedKey, setSelectedKey] = useState('dashboard');
+
+    const { user } = useAuthContext();
 
     // Breakpoint hook for sm, md, lg responsiveness
     const screens = useBreakpoint();
@@ -36,27 +36,9 @@ const Dashboard = () => {
         }
     };
 
-    const getUserRole = () => {
-
-        const token = localStorage.getItem("jwt");
-
-        axios.get(`${VITE_API_URL}/auth/user/role`, { headers: { Authorization: `Bearer ${token}` } })
-
-            .then((res) => {
-                const { status, data } = res;
-                if (status === 200) {
-                    console.log("Role => ", data.userRole)
-                    setCurrentRole(data.userRole)
-                }
-            })
-            .catch((error) => {
-                console.error("Role Issue => ", error)
-            })
-
-    }
 
     useEffect(() => {
-        getUserRole();
+        setCurrentRole(user.role);
     }, [])
 
 
@@ -197,7 +179,7 @@ const Dashboard = () => {
                         </Space>
                     </Header>
 
-                    {/* Main Content Area */}
+                    {/* Main Dashboard Routes Content Area */}
                     <Content
                         style={{
                             margin: isMobile ? '16px 12px' : '24px',
@@ -208,14 +190,7 @@ const Dashboard = () => {
                             boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
                         }}
                     >
-
-                        {/* <div style={{ marginBottom: 24 }}>
-                            <h1 className='text-2xl font-bold'>Dashboard</h1>
-                            <Text type="secondary">
-                                Welcome to the {currentRole} Workspace.
-                            </Text>
-                        </div> */}
-
+                        {/* -------- Dashboard Routes -------- */}
                         <Routes />
 
                     </Content>
